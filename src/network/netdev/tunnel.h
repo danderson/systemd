@@ -50,6 +50,9 @@ typedef struct Tunnel {
 
         uint16_t encap_src_port;
         uint16_t fou_destination_port;
+
+        struct in6_addr sixrd_prefix;
+        uint8_t sixrd_prefixlen;
 } Tunnel;
 
 DEFINE_NETDEV_CAST(IPIP, Tunnel);
@@ -108,3 +111,5 @@ int config_parse_tunnel_key(const char *unit, const char *filename,
                             unsigned section_line, const char *lvalue,
                             int ltype, const char *rvalue, void *data,
                             void *userdata);
+
+CONFIG_PARSER_PROTOTYPE(config_parse_6rd_prefix);
